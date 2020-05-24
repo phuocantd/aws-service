@@ -1,6 +1,8 @@
 import * as AWS from "aws-sdk";
 
-export const translate = new AWS.Translate();
+export const translate = new AWS.Translate({
+  region: process.env.REACT_APP_REGION,
+});
 
 // var polly = new AWS.Polly();
 
