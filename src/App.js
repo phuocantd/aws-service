@@ -13,6 +13,11 @@ function App() {
   const [targetLanguage, setTargetLanguage] = useState("vi");
   const [sourceText, setSourceText] = useState("");
   const [targetText, setTargetText] = useState("");
+  console.log({
+    region: process.env.REACT_APP_REGION,
+    secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+  });
 
   const handleSwitch = () => {
     const source = sourceLanguage;
