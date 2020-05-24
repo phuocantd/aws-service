@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Input, Select } from "antd";
 import { SwapOutlined } from "@ant-design/icons";
+import * as AWS from 'aws-sdk'
 
 import { translate } from "./aws/translate";
 import "./App.css";
@@ -13,6 +14,15 @@ function App() {
   const [targetLanguage, setTargetLanguage] = useState("vi");
   const [sourceText, setSourceText] = useState("");
   const [targetText, setTargetText] = useState("");
+
+  AWS.config.getCredentials(function (err) {
+  if (err) console.log(err.stack);
+  // credentials not loaded
+  else {
+    console.log("Access key:", AWS.config.credentials.accessKeyId);
+    console.log("Secret access key:", AWS.config.credentials.secretAccessKey);
+  }
+});
 
   const handleSwitch = () => {
     const source = sourceLanguage;
