@@ -13,11 +13,6 @@ function App() {
   const [targetLanguage, setTargetLanguage] = useState("vi");
   const [sourceText, setSourceText] = useState("");
   const [targetText, setTargetText] = useState("");
-  console.log({
-    region: process.env.REACT_APP_REGION,
-    secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
-    accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
-  });
 
   const handleSwitch = () => {
     const source = sourceLanguage;
@@ -59,8 +54,6 @@ function App() {
       function (err, data) {
         if (err) {
           console.log(err, err.stack);
-          console.log({ inputText, sourceLanguageCode, targetLanguageCode });
-          alert("Error calling Amazon Translate. " + err.message);
           return;
         }
         if (data) {
