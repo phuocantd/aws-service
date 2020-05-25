@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Alert } from "antd";
 
 import "./index.css";
 import { rekognition } from "../../aws/index";
@@ -7,14 +8,15 @@ export default function Moderation() {
   const [imageUrl, setImageUrl] = useState(null);
   const [preview, setPreview] = useState(null);
   const [isBlur, setIsBlur] = useState(false);
+  const [isSafe, setIsSafe] = useState(true);
 
   const handleClick = () => {
     // processImage(imageUrl);
-    setIsBlur(!isBlur)
+    setIsBlur(!isBlur);
   };
 
   React.useEffect(() => {
-    if (imageUrl !== null) processImage(imageUrl);
+    if (imageUrl !== null) processImage();
   }, [imageUrl]);
 
   const handleUpload = (e) => {
@@ -37,10 +39,12 @@ export default function Moderation() {
           if (err) console.log(err, err.stack);
           // an error occurred
           else {
-            console.log("sucess", data);
+            // console.log("sucess", data);
             if (data.ModerationLabels.length > 0) {
               setIsBlur(true);
+              setIsSafe(false);
             } else {
+              setIsSafe(true);
               setIsBlur(false);
             }
           }
@@ -64,6 +68,15 @@ export default function Moderation() {
           onChange={handleUpload}
         />
       </div>
+      {!isSafe && (
+        <Alert
+          style={{ marginTop: "10px" }}
+          message="Warning"
+          description="Image is not safe"
+          type="warning"
+          showIcon
+        />
+      )}
       <img
         src={preview}
         alt="preview"

@@ -3,4 +3,5 @@
 }
 .image {
   filter: blur(13px);
+  width: 80%;
 }
