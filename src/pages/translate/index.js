@@ -36,7 +36,7 @@ function Translate() {
     }
   };
 
-  const handleChangeText = async (event) => {
+  const handleChangeText = (event) => {
     const text = event.target.value;
     setSourceText(text);
     if (text !== "") {
