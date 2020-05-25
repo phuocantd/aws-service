@@ -35,7 +35,7 @@ export default function TextImage() {
           if (err) console.log(err, err.stack);
           // an error occurred
           else {
-            console.log("sucess", data);
+            // console.log("sucess", data);
             // const value = data.TextDetections.filter(
             //   (item) => item.Type === "WORD"
             // ).map((item) => item.DetectedText);
