@@ -65,6 +65,11 @@ export default function Voice() {
     setVoice(describe[value][0].value);
   };
 
+  const handleChangeVoice = (event) => {
+    handleStop();
+    setVoice(event.target.value)
+  };
+
   const handleTextDefault = () => {
     handleStop();
     setText("The quick brown fox jumps over the lazy dog.");
@@ -116,7 +121,6 @@ export default function Voice() {
         var arrayBuffer = uInt8Array.buffer;
         var blob = new Blob([arrayBuffer]);
         var url = URL.createObjectURL(blob);
-        console.log(url);
         setAudio(new Audio(url));
         // const audioElement = new Audio([url]);
         // audioElement.play();
@@ -158,7 +162,7 @@ export default function Voice() {
             defaultValue={voice}
             className="ratio"
             value={voice}
-            onChange={(event) => setVoice(event.target.value)}
+            onChange={handleChangeVoice}
           >
             {describe[language].map((item) => (
               <Radio key={item.value} value={item.value}>
