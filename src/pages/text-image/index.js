@@ -17,6 +17,7 @@ export default function TextImage() {
     if (imageUrl !== null) {
       processImage();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageUrl]);
 
   const processImage = () => {
@@ -34,7 +35,7 @@ export default function TextImage() {
           if (err) console.log(err, err.stack);
           // an error occurred
           else {
-            console.log("sucess", data);
+            // console.log("sucess", data);
             // const value = data.TextDetections.filter(
             //   (item) => item.Type === "WORD"
             // ).map((item) => item.DetectedText);

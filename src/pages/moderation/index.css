@@ -1,7 +1,7 @@
 .mt-20 {
   margin-top: 50px;
+  width: 80%;
 }
 .image {
   filter: blur(13px);
-  width: 80%;
 }
