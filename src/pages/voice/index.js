@@ -8,35 +8,35 @@ import "./index.css";
 const { TextArea } = Input;
 const { Option } = Select;
 
-// const useAudio = (url) => {
-//   const [audio] = useState(new Audio(url));
-//   const [playing, setPlaying] = useState(false);
+const describe = {
+  arb: [{ name: "Zeina, Female", value: "Zeina" }],
+  de: [
+    { name: "Marlene, Female", value: "Marlene" },
+    { name: "Vicki, Female", value: "Vicki" },
+    { name: "Hans, Male", value: "Hans" },
+  ],
+  "en-US": [
+    { name: "Salli, Female", value: "Salli" },
+    { name: "Joey, Male", value: "Joey" },
+  ],
+  "ja-JP": [
+    { name: "Mizuki, Female", value: "Mizuki" },
+    { name: "Takumi, Male", value: "Takumi" },
+  ],
+  "ko-KR": [{ name: "Seoyeon, Female", value: "Seoyeon" }],
+  "ru-RU": [
+    { name: "Tatyana, Female", value: "Tatyana" },
+    { name: "Maxim, Male", value: "Tatyana" },
+  ],
+};
 
-//   const toggle = () => setPlaying(!playing);
-//   const stop = () => {
-//     audio.currentTime = 0;
-//     audio.pause();
-//     setPlaying(false);
-//   };
-
-//   useEffect(() => {
-//     console.log(url);
-//     playing ? audio.play() : audio.pause();
-//   }, [playing, audio, url]);
-
-//   useEffect(() => {
-//     audio.addEventListener("ended", () => setPlaying(false));
-//     return () => {
-//       audio.removeEventListener("ended", () => setPlaying(false));
-//     };
-//   }, [audio]);
-
-//   return [playing, toggle, stop];
-// };
+// [
+//   { language: { name: "", value: "", voice: [{ name: "", value: "" }] } },
+// ];
 
 export default function Voice() {
-  const [language, setLanguage] = useState("en");
-  const [voice, setVoice] = useState("Joanna");
+  const [language, setLanguage] = useState("en-US");
+  const [voice, setVoice] = useState("Salli");
   const [text, setText] = useState(
     "The quick brown fox jumps over the lazy dog."
   );
@@ -45,8 +45,8 @@ export default function Voice() {
   // const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    doSynthesize(text);
-  }, [text]);
+    doSynthesize(text, voice);
+  }, [text, voice]);
 
   useEffect(() => {
     audio.addEventListener("ended", () => setPlaying(false));
@@ -62,6 +62,7 @@ export default function Voice() {
 
   const handleChangeLanguage = (value) => {
     setLanguage(value);
+    setVoice(describe[value][0].value);
   };
 
   const handleTextDefault = () => {
@@ -97,13 +98,13 @@ export default function Voice() {
     }
   };
 
-  const doSynthesize = (text) => {
+  const doSynthesize = (text, voice) => {
     const params = {
       OutputFormat: "mp3",
       SampleRate: "8000",
       Text: text,
       TextType: "text",
-      VoiceId: "Joanna",
+      VoiceId: voice,
     };
 
     polly.synthesizeSpeech(params, function (err, data) {
@@ -142,17 +143,12 @@ export default function Voice() {
             style={{ width: 120 }}
             onChange={handleChangeLanguage}
           >
-            <Option value="en">English</Option>
-            <Option value="vi">Vietnamese</Option>
-            <Option value="ar">Arabic</Option>
-            <Option value="cs">Czech</Option>
+            <Option value="arb">Arabic</Option>
+            <Option value="en-US">English, US</Option>
             <Option value="de">German</Option>
-            <Option value="fr">French</Option>
-            <Option value="it">Italian</Option>
-            <Option value="ja">Japanese</Option>
-            <Option value="ru">Russian</Option>
-            <Option value="tr">Turkish</Option>
-            <Option value="zh">Chinese</Option>
+            <Option value="ja-JP">Japanese</Option>
+            <Option value="ru-RU">Russian</Option>
+            <Option value="ko-KR">Korean</Option>
           </Select>
         </div>
         <div>
@@ -164,9 +160,11 @@ export default function Voice() {
             value={voice}
             onChange={(event) => setVoice(event.target.value)}
           >
-            <Radio value="Joanna">Joanna</Radio>
-            <Radio value="Ivy">Ivy</Radio>
-            <Radio value="Joey">Joey</Radio>
+            {describe[language].map((item) => (
+              <Radio key={item.value} value={item.value}>
+                {item.name}
+              </Radio>
+            ))}
           </Radio.Group>
         </div>
         <div className="btn-group">
