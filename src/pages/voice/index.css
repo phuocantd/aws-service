@@ -1,0 +1,16 @@
+.control {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ratio {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+}

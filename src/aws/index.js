@@ -6,4 +6,8 @@ export const translate = new AWS.Translate({
   accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
 });
 
-// var polly = new AWS.Polly();
+export const polly = new AWS.Polly({
+  region: "ap-southeast-1",
+  secretAccessKey: "wX6hinF8f1NSpQ2S2T2OrblfD4qKMhTlEbpOSK5e",
+  accessKeyId: "AKIARBLBFVRUASBU345C",
+});
