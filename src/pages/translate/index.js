@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Input, Select } from "antd";
 import { SwapOutlined } from "@ant-design/icons";
 
-import { translate } from "../../aws/translate";
+import { translate } from "../../aws";
 import "./index.css";
 
 const { TextArea } = Input;
@@ -64,7 +64,7 @@ function Translate() {
   };
 
   return (
-    <div className='translate'>
+    <div className="translate">
       <h1>Amazon Translate</h1>
       <div className="language">
         <Select

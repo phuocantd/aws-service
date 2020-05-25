@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
 import { Layout, Menu } from "antd";
-import { HomeOutlined, TranslationOutlined } from "@ant-design/icons";
+import {
+  HomeOutlined,
+  TranslationOutlined,
+  AudioFilled,
+} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 import "./index.css";
@@ -48,6 +52,12 @@ function LayoutPage({ children }) {
             <Link to="/translate">
               <TranslationOutlined />
               <span>Translate</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="/voice">
+            <Link to="/voice">
+              <AudioFilled />
+              <span>Voice</span>
             </Link>
           </Menu.Item>
         </Menu>

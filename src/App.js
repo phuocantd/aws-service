@@ -5,6 +5,7 @@ import "./App.css";
 import Layout from "./components/Layout";
 import TranslatePage from "./pages/translate";
 import HomePage from "./pages/home";
+import VoicePage from "./pages/voice";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
             </Route>
             <Route exact path="/translate">
               <TranslatePage />
+            </Route>
+            <Route exact path="/voice">
+              <VoicePage />
             </Route>
           </Switch>
         </Layout>
