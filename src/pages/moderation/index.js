@@ -17,6 +17,7 @@ export default function Moderation() {
 
   React.useEffect(() => {
     if (imageUrl !== null) processImage();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageUrl]);
 
   const handleUpload = (e) => {
@@ -57,7 +58,7 @@ export default function Moderation() {
   return (
     <div>
       <div>
-        <button type="button" onClick={handleClick}>
+        <button type="button" onClick={handleClick} style={{ marginRight: 10 }}>
           {isBlur ? "View content" : "Blur content"}
         </button>
         <input

@@ -17,6 +17,7 @@ export default function TextImage() {
     if (imageUrl !== null) {
       processImage();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageUrl]);
 
   const processImage = () => {
