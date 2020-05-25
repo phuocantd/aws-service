@@ -7,7 +7,13 @@ export const translate = new AWS.Translate({
 });
 
 export const polly = new AWS.Polly({
-  region: "ap-southeast-1",
-  secretAccessKey: "wX6hinF8f1NSpQ2S2T2OrblfD4qKMhTlEbpOSK5e",
-  accessKeyId: "AKIARBLBFVRUASBU345C",
+  region: process.env.REACT_APP_REGION,
+  secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
 });
+
+export const rekognition =new AWS.Rekognition({
+  region: process.env.REACT_APP_REGION,
+  secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+})

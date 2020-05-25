@@ -5,6 +5,8 @@ import {
   HomeOutlined,
   TranslationOutlined,
   AudioFilled,
+  FileImageOutlined,
+  FileTextOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
@@ -58,6 +60,18 @@ function LayoutPage({ children }) {
             <Link to="/voice">
               <AudioFilled />
               <span>Voice</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="/moderation">
+            <Link to="/moderation">
+              <FileImageOutlined />
+              <span>Image moderation</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="/text-image">
+            <Link to="/text-image">
+              <FileTextOutlined />
+              <span>Text Image</span>
             </Link>
           </Menu.Item>
         </Menu>

@@ -6,6 +6,8 @@ import Layout from "./components/Layout";
 import TranslatePage from "./pages/translate";
 import HomePage from "./pages/home";
 import VoicePage from "./pages/voice";
+import ModerationPage from "./pages/moderation";
+import TextImagePage from "./pages/text-image";
 
 function App() {
   return (
@@ -21,6 +23,12 @@ function App() {
             </Route>
             <Route exact path="/voice">
               <VoicePage />
+            </Route>
+            <Route exact path="/moderation">
+              <ModerationPage />
+            </Route>
+            <Route exact path="/text-image">
+              <TextImagePage />
             </Route>
           </Switch>
         </Layout>
